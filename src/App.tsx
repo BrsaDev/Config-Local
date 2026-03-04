@@ -484,10 +484,10 @@ export default function App() {
                   {/* Periodicidade */}
                   <div>
                     <label className="text-[9px] font-bold uppercase opacity-50 block mb-2">Tempo de Retenção (Logs)</label>
-                    <select className="w-full bg-white border border-line/10 rounded-lg p-2 text-[10px] font-mono outline-none">
+                    <select defaultValue="30 Dias" className="w-full bg-white border border-line/10 rounded-lg p-2 text-[10px] font-mono outline-none">
                       <option>24 Horas (Auto-delete)</option>
                       <option>7 Dias</option>
-                      <option selected>30 Dias</option>
+                      <option>30 Dias</option>
                       <option>Permanente (Manual)</option>
                     </select>
                   </div>
