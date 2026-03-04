@@ -1,0 +1,5 @@
+{
+  "name": "config local",
+  "description": "Monitoramento de tráfego local e análise de navegação.",
+  "requestFramePermissions": []
+}
