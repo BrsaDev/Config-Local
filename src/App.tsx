@@ -562,7 +562,7 @@ export default function App() {
       </main>
 
       {/* Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-bg border-t border-line/20 flex justify-around items-center p-4 z-20">
+      <nav className="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-[#E4E3E0] border-t border-line/20 flex justify-around items-center p-4 z-30 shadow-[0_-10px_30px_rgba(0,0,0,0.1)]">
         <button 
           onClick={() => setActiveTab('log')}
           className={cn("flex flex-col items-center gap-1", activeTab === 'log' ? "text-ink" : "text-ink/30")}
