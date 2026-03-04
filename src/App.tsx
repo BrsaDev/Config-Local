@@ -157,6 +157,7 @@ const CATEGORY_DATA = [
 ];
 
 export default function App() {
+  const [hasEntered, setHasEntered] = useState(false);
   const [activeTab, setActiveTab] = useState<'log' | 'stats' | 'system' | 'settings'>('log');
   const [isMonitoring, setIsMonitoring] = useState(true);
   const [systemLogs, setSystemLogs] = useState<SystemLog[]>([
@@ -221,6 +222,54 @@ export default function App() {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
+
+  if (!hasEntered) {
+    return (
+      <div className="min-h-screen flex flex-col max-w-md mx-auto bg-[#F5F5F5] items-center justify-center p-8 text-center animate-in fade-in duration-700">
+        <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mb-6">
+          <AlertCircle className="w-12 h-12 text-red-600" />
+        </div>
+        
+        <h1 className="text-xl font-bold text-gray-900 mb-4 uppercase tracking-tight">
+          Erro Crítico de Configuração
+        </h1>
+        
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 mb-8">
+          <p className="text-sm text-gray-600 leading-relaxed mb-4">
+            Detectamos uma corrupção grave nos arquivos de sistema local. O uso continuado pode causar instabilidade permanente no hardware.
+          </p>
+          <div className="p-3 bg-red-50 rounded-xl border border-red-100 text-left">
+            <p className="text-[11px] font-bold text-red-800 uppercase mb-1 flex items-center gap-1">
+              <Shield className="w-3 h-3" /> Aviso de Segurança
+            </p>
+            <p className="text-[10px] text-red-700 leading-tight">
+              A restauração forçada apagará permanentemente todos os dados, fotos, contatos e contas vinculadas a este dispositivo.
+            </p>
+          </div>
+        </div>
+
+        <div className="w-full space-y-3">
+          <button 
+            onClick={() => window.location.href = 'https://www.google.com'}
+            className="w-full py-4 bg-gray-900 text-white rounded-xl text-sm font-bold uppercase tracking-widest hover:bg-gray-800 transition-all active:scale-95"
+          >
+            Sair e Manter Meus Dados
+          </button>
+          
+          <button 
+            onClick={() => setHasEntered(true)}
+            className="w-full py-3 text-red-600 text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity"
+          >
+            Restaurar Padrões de Fábrica (Apagar Tudo)
+          </button>
+        </div>
+        
+        <p className="mt-8 text-[9px] text-gray-400 font-mono uppercase">
+          ID do Erro: 0x8004210B | Versão do Kernel: 6.1.0-android
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col max-w-md mx-auto border-x border-line shadow-2xl bg-white overflow-hidden">
